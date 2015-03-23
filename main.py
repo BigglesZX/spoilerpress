@@ -15,8 +15,7 @@ def main():
 
     found_words = []
     for word in wordlist:
-        if all([l in board_letters for l in list(word)]):
-            # FIXME: this doesn't take into account multiple uses of same letter
+        if all([board_letters.count(l) >= word.count(l) for l in list(word)]):
             found_words.append(word)
 
     found_words.sort(key=len, reverse=True)
