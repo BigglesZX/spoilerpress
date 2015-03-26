@@ -1,1 +1,17 @@
 h1. Spoilerpress
+
+A quick and dirty Letterpress solver. Finds the longest dictionary words you can play with the given selection of letters.
+
+Spoilerpress uses the official Letterpress English dictionary, iterating each of the words within and testing if they can be made using the supplied letters.
+
+Fun fact: my initial version was the other way around, attempting to iterate all possible arrangements of letters on the given board and testing each for presence in the dictionary. It didn't take me long to realise that this involved 25 factorial combinations which would take something like 491,857,243,785 years (seriously) to complete with a single CPU, at 1,000,000 guesses per second (which I found to be reasonable in testing). So I gave up on that approach.
+
+It's up to you to decide how best to use the words strategically. I didn't want to completely ruin the game. Good luck.
+
+h2. Usage
+
+bc. $ python spoilerpress.py PITBUWZRSVOIRNOBFAENPLSXA
+
+You can specify the length of the list of longest words (defaults to 10):
+
+bc. $ python spoilerpress.py -n 20 PITBUWZRSVOIRNOBFAENPLSXA
