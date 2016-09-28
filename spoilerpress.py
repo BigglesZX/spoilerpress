@@ -19,6 +19,7 @@ def main():
     args = parser.parse_args()
     board_letters = args.letters.upper()
 
+    ''' Read in wordlist '''
     wordlist = set(line.strip() for line in open(WORDLIST))
     print "Testing letters: {0}".format(board_letters)
     print "{0} words in dictionary file".format(len(wordlist))
@@ -26,9 +27,13 @@ def main():
 
     found_words = []
     for word in wordlist:
+        ''' If all letters in the word appear the same number of times 
+            or greater on the board...
+        '''
         if all([board_letters.count(l) >= word.count(l) for l in list(word)]):
             found_words.append(word)
 
+    ''' Sort found words by length '''
     found_words.sort(key=len, reverse=True)
     print "{0} words found on board:".format(len(found_words))
     for word in found_words[:args.limit]:
